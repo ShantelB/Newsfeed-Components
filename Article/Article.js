@@ -21,6 +21,8 @@ const data = [
         naboo ackbar tatooine. Hutt lars padmé darth. Maul solo darth darth jabba qui-gon chewbacca darth maul. Moff baba wicket
         han. C-3po antilles moff qui-gon ahsoka aayla dooku amidala. Palpatine droid amidala droid k-3po twi'lek padmé wookiee. Leia
         moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`
+
+        
   },
   {
     title: 'Javascript and You, ES6',
@@ -85,7 +87,16 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+{
+  title: 'Professional Software Development in 2019',
+  date: 'Jan 5th, 2019',
+  firstParagraph: 'Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!!',
+
+  secondParagraph: 'Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!!',
+
+  thirdParagraph: 'Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!! Oh NO!!!'
+}
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -112,3 +123,57 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+const articles = document.querySelector('.articles')
+
+function createArticle ({title, date,firstParagraph,secondParagraph,thirdParagraph, fourthParagraph}){
+  const article = document.createElement('div')
+  const articleTitle = document.createElement('h2')
+  const articleDate = document.createElement('p')
+  const paragraph1 = document.createElement('p')
+  const paragraph2 = document.createElement('p')
+  const paragraph3 = document.createElement('p')
+  const paragraph4 = document.createElement('p')
+  const buttons = document.createElement('span')
+
+
+
+  article.classList.add('article')
+  articleDate.classList.add('date')
+  buttons.classList.add('expandButton')
+  
+
+  buttons.addEventListener('click', function(){
+   article.classList.toggle('article-open')
+  })
+
+article.appendChild(articleTitle)
+article.appendChild(articleDate)
+article.appendChild(paragraph1)
+article.appendChild(paragraph2)
+article.appendChild(paragraph3)
+article.appendChild(paragraph4)
+article.appendChild(buttons)
+
+
+articleTitle.textContent = title
+articleDate.textContent = date
+paragraph1.textContent = firstParagraph
+paragraph2.textContent = secondParagraph
+paragraph3.textContent = thirdParagraph
+paragraph4.textContent = fourthParagraph
+buttons.textContent = 'Read Me'
+
+return article
+
+
+}
+
+ const maps = data.map( function(x) {
+   return createArticle(x)
+ })
+
+ 
+ maps.forEach(function(item){
+articles.appendChild(item)
+ })
+ 
